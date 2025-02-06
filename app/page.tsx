@@ -1,13 +1,14 @@
 import Alert from "@/components/pages/Alert";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import prisma from "@/lib/prisma";
+import Script from "next/script";
 
-export default function Home() {
+export default async function Home() {
+  const users = await prisma.user.findMany();
   return (
-    <div className="flex justify-center items-center min-h-[100vh]">
-      <Alert title="Bạn có thực sự muốn làm điều này?" description="Nếu bạn làm điều này, chúng tôi sẽ biến bạn thành một món súp.">
-        <Button variant={"destructive"}>Nhấp vào đây!</Button>
-      </Alert>
-    </div>
+    <>
+      Xin chào :D
+    </>
   );
 }
