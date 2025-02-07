@@ -14,26 +14,45 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useUser } from "@clerk/clerk-react";
+import { useToast } from "@/hooks/use-toast";
+import { title } from "process";
+
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  body: z.string().min(2, {
+    message: "Body must be at least 2 characters.",
   }),
 });
 
 export function ProfileForm() {
+  const mutation = useMutation(api.mutations.createPost);
+  const user = useUser();
+  const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      body: "",
     },
   });
+
+  let toastMessage = "Your post has been submitted!";
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+    if (user.user != null && user.user.username != null) {
+      mutation({ content: values.body, username: user.user.username });
+    } else {
+      toastMessage = "You must be logged in to submit a post.";
+    }
+    toast({
+      description: toastMessage,
+    })
     console.log(values);
   }
 
@@ -42,15 +61,15 @@ export function ProfileForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          name="username"
+          name="body"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Type something</FormLabel>
               <FormControl>
                 <Input placeholder="shadcn" {...field} />
               </FormControl>
               <FormDescription>
-                This is your public display name.
+                This is your not public display.
               </FormDescription>
               <FormMessage />
             </FormItem>

@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/ConvexClientProvider";
 import { viVN } from "@clerk/localizations";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
         <html lang="en">
           <body className={`${inter.className} antialiased`}>
             <Navbar></Navbar>
+            <Toaster />
             {children}
             <Script
               src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
