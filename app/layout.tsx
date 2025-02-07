@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/pages/NavBar";
 import Script from "next/script";
 import { ClerkProvider } from "@clerk/nextjs";
+import { ConvexClientProvider } from "@/ConvexClientProvider";
+import { viVN } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,18 +21,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.className} antialiased`}>
-          <Navbar></Navbar>
-          {children}
-          <Script
-            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-            async
-            id="MathJax-script"
-          ></Script>
-        </body>
-      </html>
+    <ClerkProvider localization={viVN}>
+      <ConvexClientProvider>
+        <html lang="en">
+          <body className={`${inter.className} antialiased`}>
+            <Navbar></Navbar>
+            {children}
+            <Script
+              src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+              async
+              id="MathJax-script"
+            ></Script>
+          </body>
+        </html>
+      </ConvexClientProvider>
     </ClerkProvider>
   );
 }
