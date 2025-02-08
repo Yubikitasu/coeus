@@ -1,12 +1,22 @@
-import { ProfileForm } from "@/components/pages/testForm";
-import { SignInButton } from "@clerk/nextjs";
-import localFont from "next/font/local";
-import Image from "next/image";
+'use client'
 
-export default async function Home() {
+import { useUser } from "@clerk/nextjs"
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
+export default function Home() {
+  const { isSignedIn }  = useUser();
+  const router = useRouter();
+  useEffect(() => { 
+    if (isSignedIn) {
+      router.push("/workspace");
+    } else {
+      router.push("/");
+    }
+  }, [isSignedIn, router])
   return (
-    <>
-      <ProfileForm />
-    </>
+    <div className="flex flex-col items-center justify-center min-h-screen">
+      Welcome to Coeus!
+    </div>
   );
 }

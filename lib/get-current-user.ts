@@ -1,11 +1,11 @@
 "use server"
 
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 export async function getCurrentUser() {
-    const user = await currentUser();
+    const { userId } = await currentUser();
 
-    if (!user) return null;
+    if (!userId) return null;
 
-    return user;
+    return userId;
 }

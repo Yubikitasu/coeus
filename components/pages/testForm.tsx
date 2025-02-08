@@ -16,10 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useUser } from "@clerk/clerk-react";
+import { useOrganization, useUser } from "@clerk/clerk-react";
 import { useToast } from "@/hooks/use-toast";
-import { title } from "process";
-
+import { auth } from "@clerk/nextjs/server";
 
 const formSchema = z.object({
   body: z.string().min(2, {
@@ -30,6 +29,7 @@ const formSchema = z.object({
 export function ProfileForm() {
   const mutation = useMutation(api.mutations.createPost);
   const user = useUser();
+  const organization = useOrganization();
   const { toast } = useToast();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -45,15 +45,15 @@ export function ProfileForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    if (user.user != null && user.user.username != null) {
-      mutation({ content: values.body, username: user.user.username });
+    if (user.user != null && user.user.username != null && organization.organization != null) {
+      mutation({ content: values.body, username: user.user.username, userId: user.user.id, orgId: organization.organization.id});
     } else {
-      toastMessage = "You must be logged in to submit a post.";
+      toastMessage = "You must be logged in or in a organization to submit a post.";
     }
     toast({
       description: toastMessage,
     })
-    console.log(values);
+    // console.log(values);
   }
 
   return (
