@@ -21,10 +21,16 @@ import {
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import TinNhan from "./tin-nhan";
+import BaiTap from "./bai-tap";
+import TraDiem from "./tra-diem";
 
 export default function Workspace() {
   const { user, isSignedIn, isLoaded } = useUser();
   const { organization } = useOrganization();
+  const [pageState, setPageState] = useState("");
+
   if (!isLoaded) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
@@ -74,8 +80,11 @@ export default function Workspace() {
   //         </div>
   // );
   return (
-    <div className="grid grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative">
-        {/* //LEFT PART */}
+    <div
+      className="grid grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative"
+      id="left-panel"
+    >
+      {/* //LEFT PART */}
       <div className="border-x hidden md:block border-input shadow-sm flex-row w-100">
         <ClerkLoading>Loading...</ClerkLoading>
         <ClerkLoaded>
@@ -103,19 +112,39 @@ export default function Workspace() {
               <OrganizationSwitcher hidePersonal />
             </div>
           </div>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center">
+          <div
+            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            onClick={() => {
+              setPageState("tin-nhan");
+            }}
+          >
             Tin nhắn
             <ArrowRightIcon />
           </div>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center">
+          <div
+            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            onClick={() => {
+              setPageState("bai-tap");
+            }}
+          >
             Bài tập
             <ArrowRightIcon />
           </div>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center">
+          <div
+            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            onClick={() => {
+              setPageState("tra-diem");
+            }}
+          >
             Tra điểm
             <ArrowRightIcon />
           </div>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center">
+          <div
+            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            onClick={() => {
+              setPageState("");
+            }}
+          >
             Hướng dẫn sử dụng
             <ArrowRightIcon />
           </div>
@@ -123,7 +152,19 @@ export default function Workspace() {
           <Messages /> */}
         </ClerkLoaded>
       </div>
-      <div></div>
+      <div>
+        {pageState === "tin-nhan" ? (
+          <TinNhan />
+        ) : pageState === "bai-tap" ? (
+          <BaiTap />
+        ) : pageState === "tra-diem" ? (
+          <TraDiem />
+        ) : pageState === "" ? (
+          <></>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }
