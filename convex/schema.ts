@@ -16,5 +16,5 @@ export default defineSchema({
     baitapDescription: v.optional(v.string()),
   })
     .index("by_user_org", ["userId", "orgId"])
-    .index("by_org", ["userId"]),
+    .index("by_org", ["orgId"]),
 });

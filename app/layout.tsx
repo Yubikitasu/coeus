@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
 // import { Inter } from "next/font/google";
-import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "@/ConvexClientProvider";
@@ -9,9 +8,8 @@ import { viVN } from "@clerk/localizations";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/pages/NavBar";
-
-// const inter = Inter({ subsets: ["latin"] });
-const inter = Be_Vietnam_Pro({ subsets: ["latin-ext"], weight: ["500"]});
+import { ReactLenis, useLenis } from 'lenis/react';
+import { monaSans } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Coeus - Nền tảng học Trực tuyến và Trực tiếp.",
@@ -26,15 +24,17 @@ export default function RootLayout({
   return (
     <ClerkProvider localization={viVN}>
       <ConvexClientProvider>
-        <html lang="en" suppressHydrationWarning>
-          <body className={`${inter.className} antialiased`}>
-            {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-              <Navbar></Navbar>
-              <Toaster />
-              {children}
-            {/* </ThemeProvider> */}
-          </body>
-        </html>
+        <ReactLenis root>
+          <html lang="en" suppressHydrationWarning>
+            <body className={`${monaSans.className} antialiased`}>
+              {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+                <Navbar></Navbar>
+                <Toaster />
+                {children}
+              {/* </ThemeProvider> */}
+            </body>
+          </html>
+        </ReactLenis>
       </ConvexClientProvider>
     </ClerkProvider>
   );

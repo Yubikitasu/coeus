@@ -1,41 +1,35 @@
 "use client";
 
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { PlusIcon } from "@radix-ui/react-icons";
+import { BaiTapForm } from "./testForm";
 
 export function BaiTapCreate() {
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <div className="m-2 h-[200px] w-100 border border-black bg-background shadow-lg rounded-lg flex flex-col justify-center items-center hover:bg-accent cursor-pointer text-xs">
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="h-[70px] w-100 border-b border-x border-inherit bg-background flex justify-center items-center hover:bg-accent cursor-pointer text-xs">
           <PlusIcon />
-          <span className="mt-2">Tạo bài tập</span>
+          <span className="ms-2">Tạo bài tập</span>
         </div>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Tạo bài tập mới</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Tạo một bài tập mới</DialogTitle>
+          <DialogDescription>
+            Bạn hãy tạo một bài tập mới, rồi sau đó bạn có thể chỉnh sửa đề bài,
+            thêm câu hỏi, và thêm câu trả lời.
+          </DialogDescription>
+          <BaiTapForm />
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   );
 }

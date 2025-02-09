@@ -1,29 +1,22 @@
 "use client";
 
-import { LatexRenderer } from "@/components/LatexRenderer";
-import Messages from "@/components/pages/Messages";
-import NavBarAccount from "@/components/pages/NavBarAccount";
-import { ProfileForm } from "@/components/pages/testForm";
 import { Label } from "@/components/ui/label";
 import {
   ClerkLoaded,
   ClerkLoading,
-  CreateOrganization,
-  OrganizationList,
   OrganizationSwitcher,
   RedirectToSignIn,
   SignedIn,
   SignedOut,
-  SignInButton,
   useOrganization,
-  useUser,
+  useUser
 } from "@clerk/nextjs";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import TinNhan from "./tin-nhan";
+import { useEffect, useState } from "react";
 import BaiTap from "./bai-tap";
+import TinNhan from "./tin-nhan";
 import TraDiem from "./tra-diem";
 
 export default function Workspace() {
@@ -61,31 +54,12 @@ export default function Workspace() {
       </div>
     );
   }
-  // return (
-  //     <div className="flex flex-col items-center justify-center min-h-screen">
-  //         <LatexRenderer latex="\int f(x) \ dx = x^2 + 3x - 2" id="sodifjsodifjosifj" />
-  //         <SignedIn>
-  //             <ClerkLoading>
-  //             Loading...
-  //             </ClerkLoading>
-  //             <ClerkLoaded>
-  //             <OrganizationSwitcher hidePersonal />
-  //             <ProfileForm />
-  //             <Messages />
-  //             </ClerkLoaded>
-  //         </SignedIn>
-  //         <SignedOut>
-  //             User is not signed in.
-  //         </SignedOut>
-  //         </div>
-  // );
   return (
     <div
       className="grid grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative"
-      id="left-panel"
     >
       {/* //LEFT PART */}
-      <div className="border-x hidden md:block border-input shadow-sm flex-row w-100">
+      <div className="border-x hidden md:block border-input shadow-sm flex-row w-100" id="left-panel">
         <ClerkLoading>Loading...</ClerkLoading>
         <ClerkLoaded>
           <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm">
@@ -152,7 +126,7 @@ export default function Workspace() {
           <Messages /> */}
         </ClerkLoaded>
       </div>
-      <div>
+      <div id="right-panel">
         {pageState === "tin-nhan" ? (
           <TinNhan />
         ) : pageState === "bai-tap" ? (
