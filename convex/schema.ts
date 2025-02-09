@@ -6,6 +6,15 @@ export default defineSchema({
     userId: v.any(),
     orgId: v.any(),
     username: v.string(),
-    content: v.string()
+    content: v.string(),
   }).index("by_user_org", ["userId", "orgId"]),
+  baitap: defineTable({
+    userId: v.any(),
+    orgId: v.any(),
+    username: v.string(),
+    baitapTitle: v.string(),
+    baitapDescription: v.optional(v.string()),
+  })
+    .index("by_user_org", ["userId", "orgId"])
+    .index("by_org", ["userId"]),
 });
