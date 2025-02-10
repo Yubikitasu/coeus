@@ -14,7 +14,9 @@ export default defineSchema({
     username: v.string(),
     baitapTitle: v.string(),
     baitapDescription: v.optional(v.string()),
+    baiTapId: v.string(),
   })
     .index("by_user_org", ["userId", "orgId"])
-    .index("by_org", ["orgId"]),
+    .index("by_org", ["orgId"])
+    .index("by_baitapId", ["baiTapId"]),
 });

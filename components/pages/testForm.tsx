@@ -19,6 +19,7 @@ import { api } from "@/convex/_generated/api";
 import { useOrganization, useUser } from "@clerk/clerk-react";
 import { useToast } from "@/hooks/use-toast";
 import { auth } from "@clerk/nextjs/server";
+import { generateUniqueId } from "@/lib/generateUniqueId";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -48,7 +49,7 @@ export function BaiTapForm() {
   });
 
   let toastMessage = `Bài tập mới có tiêu đề "` + form.getValues().title + `" đã được tạo.`;
-  let toastTitle = `Tạo bài tập thành công`;
+  let toastTitle = `🎉 Tạo bài tập thành công`;
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -65,6 +66,7 @@ export function BaiTapForm() {
         orgId: organization.organization.id,
         baitapTitle: values.title,
         baitapDescription: values.description,
+        baiTapId: generateUniqueId(),
       });
     } else {
       toastMessage =

@@ -26,6 +26,7 @@ export const createBaiTap = mutation({
     username: v.string(),
     baitapTitle: v.string(),
     baitapDescription: v.optional(v.string()),
+    baiTapId: v.string(),
   },
   handler: async (ctx, args) => {
     const baiTap = await ctx.db.insert("baitap", {
@@ -34,6 +35,7 @@ export const createBaiTap = mutation({
       username: args.username,
       baitapTitle: args.baitapTitle,
       baitapDescription: args.baitapDescription,
+      baiTapId: args.baiTapId,
     });
     return baiTap;
   },

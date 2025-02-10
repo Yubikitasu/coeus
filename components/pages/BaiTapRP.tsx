@@ -5,6 +5,7 @@ import { useOrganization, useUser } from "@clerk/clerk-react";
 import { usePaginatedQuery } from "convex/react";
 import { Button } from "../ui/button";
 import { DotsVerticalIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export function BaiTapFromUserOrg() {
   const { isSignedIn, user } = useUser();
@@ -25,7 +26,7 @@ export function BaiTapFromUserOrg() {
         <div>
           {results.length != 0 ? (
             results?.map((baitap) => (
-              <div
+              <Link href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
@@ -39,7 +40,7 @@ export function BaiTapFromUserOrg() {
                     <DotsVerticalIcon />
                   </Button>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <div className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
@@ -83,7 +84,7 @@ export function BaiTapFromOrg() {
         <div>
           {results.length != 0 ? (
             results?.map((baitap) => (
-              <div
+              <Link href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
@@ -101,7 +102,7 @@ export function BaiTapFromOrg() {
                     <></>
                   )}
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <div className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
