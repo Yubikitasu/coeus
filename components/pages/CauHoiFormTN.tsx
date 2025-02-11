@@ -18,6 +18,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
+import { LatexRenderer } from "../LatexRenderer";
+import LatexAdder from "./LatexAdder";
 
 const FormSchema = z.object({
   cauhoi: z
@@ -66,7 +68,7 @@ export default function CauHoiFormTN() {
   }
 
   return (
-    <div className="w-[65%] h-auto border border-input p-6 shadow-sm bg-background justify-between items-center rounded-md">
+    <div className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-sm bg-background justify-between items-center rounded-md">
       <h1 className="text-2xl font-black mb-2">Tạo câu hỏi trắc nghiệm</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -85,9 +87,10 @@ export default function CauHoiFormTN() {
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Mẹo: Bạn không cần phải viết "Câu 1:", "Câu 2:" ở đầu câu hỏi.
-                  Hệ thống sẽ tự động thêm vào.
+                  Mẹo: Bạn không cần phải viết "Câu 1:" ở đầu câu hỏi. Hệ thống
+                  sẽ tự động thêm vào.
                 </FormDescription>
+                <LatexAdder />
               </FormItem>
             )}
           />
