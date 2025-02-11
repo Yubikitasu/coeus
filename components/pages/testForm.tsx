@@ -1,8 +1,5 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,12 +11,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { useOrganization, useUser } from "@clerk/clerk-react";
 import { useToast } from "@/hooks/use-toast";
-import { auth } from "@clerk/nextjs/server";
 import { generateUniqueId } from "@/lib/generateUniqueId";
+import { useOrganization, useUser } from "@clerk/clerk-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "convex/react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   title: z.string().min(2, {

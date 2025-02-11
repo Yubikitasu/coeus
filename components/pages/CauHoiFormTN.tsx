@@ -13,12 +13,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckIcon } from "@radix-ui/react-icons";
+import { toast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CheckIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { toast } from "@/hooks/use-toast";
-import { LatexRenderer } from "../LatexRenderer";
 import LatexAdder from "./LatexAdder";
 
 const FormSchema = z.object({
@@ -87,7 +86,7 @@ export default function CauHoiFormTN() {
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Mẹo: Bạn không cần phải viết "Câu 1:" ở đầu câu hỏi. Hệ thống
+                  Mẹo: Bạn không cần phải viết &quot;Câu 1:&quot; ở đầu câu hỏi. Hệ thống
                   sẽ tự động thêm vào.
                 </FormDescription>
                 <LatexAdder />
@@ -189,7 +188,7 @@ export default function CauHoiFormTN() {
           />
 
           <FormDescription className="text-sm text-muted-foreground">
-            Mẹo: Bạn không cần phải viết "A.", "B.", "C.", "D." ở đầu câu trả
+            Mẹo: Bạn không cần phải viết &quot;A.&quot;, &quot;B.&quot;, &quot;C.&quot;, &quot;D.&quot; ở đầu câu trả
             lời. Hệ thống sẽ tự động thêm vào.
           </FormDescription>
           <Button className="w-[100%]" variant={"outline"} type="submit">

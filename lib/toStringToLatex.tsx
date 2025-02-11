@@ -2,7 +2,7 @@ import { LatexRenderer } from "@/components/LatexRenderer";
 
 export default function tSTL(data: string) {
   if (data.includes("$")) {
-    let content = data;
+    const content = data;
     const regex = /\$\$(.*?)\$\$|\$(.*?)\$|\\\[(.*?)\\\]|([^$\\]+)/g;
     const matches = [...content.matchAll(regex)].map((match) => {
       return {

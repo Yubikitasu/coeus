@@ -4,17 +4,16 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
+  DrawerTrigger
 } from "@/components/ui/drawer";
+import tSTL from "@/lib/toStringToLatex";
+import { useState } from "react";
 import { LatexRenderer } from "../LatexRenderer";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
-import { useState } from "react";
-import tSTL from "@/lib/toStringToLatex";
 
 export default function LatexAdder() {
   const latexData = [
@@ -27,7 +26,7 @@ export default function LatexAdder() {
     "\\sqrt{x^2 + y^2}",
     "\\overrightarrow{AB}",
   ];
-  let [value, setValue] = useState("");
+  const [value, setValue] = useState("");
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -62,7 +61,7 @@ export default function LatexAdder() {
                   key={data}
                   className="p-6"
                   onClick={() => {
-                    setValue(`${(value += "$" + data + "$")}`);
+                    setValue(`${(value) + "$" + data + "$"}`);
                   }}
                 >
                   <LatexRenderer

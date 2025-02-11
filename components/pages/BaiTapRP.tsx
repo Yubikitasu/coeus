@@ -10,17 +10,17 @@ import Link from "next/link";
 export function BaiTapFromUserOrg() {
   const { isSignedIn, user } = useUser();
   const { organization } = useOrganization();
+  const { results, status, loadMore } = usePaginatedQuery(
+    api.query.findBaiTap,
+    {
+      userId: user?.id,
+      orgId: organization?.id,
+    },
+    { initialNumItems: 5 }
+  );
   if (!isSignedIn || !organization || !user || !user.id || !organization.id) {
     return <div>Error!</div>;
   } else {
-    const { results, status, loadMore } = usePaginatedQuery(
-      api.query.findBaiTap,
-      {
-        userId: user.id,
-        orgId: organization.id,
-      },
-      { initialNumItems: 5 }
-    );
     return (
       <div>
         <div>
@@ -69,16 +69,16 @@ export function BaiTapFromUserOrg() {
 export function BaiTapFromOrg() {
   const { isSignedIn, user } = useUser();
   const { organization } = useOrganization();
+  const { results, status, loadMore } = usePaginatedQuery(
+    api.query.findBaiTapByOrg,
+    {
+      orgId: organization?.id,
+    },
+    { initialNumItems: 5 }
+  );
   if (!isSignedIn || !organization || !user || !user.id || !organization.id) {
     return <div>Error!</div>;
   } else {
-    const { results, status, loadMore } = usePaginatedQuery(
-      api.query.findBaiTapByOrg,
-      {
-        orgId: organization.id,
-      },
-      { initialNumItems: 5 }
-    );
     return (
       <div>
         <div>

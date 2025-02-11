@@ -18,6 +18,6 @@ export const LatexRenderer: React.FC<LatexRendererProps> = ({ latex, id }) => {
             throwOnError: false,
           });
         }
-      }, [latex]);
+      }, [latex, id]);
     return <span id={id} className="mx-2"></span>;
 }

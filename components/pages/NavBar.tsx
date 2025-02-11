@@ -1,11 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import NavBarAccount from "./NavBarAccount";
-import NavbarButton from "./NavbarButton";
-import ThemeChangeButton from "./ThemeChangeButton";
-import { Roboto_Condensed } from "next/font/google";
-import Image from "next/image";
-
-const rbtCon = Roboto_Condensed();
 
 export default function Navbar() {
   return (

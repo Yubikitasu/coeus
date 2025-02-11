@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
 // import { Inter } from "next/font/google";
-import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/components/pages/NavBar";
+import { Toaster } from "@/components/ui/toaster";
 import { ConvexClientProvider } from "@/ConvexClientProvider";
 import { viVN } from "@clerk/localizations";
-import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "@/components/theme-provider";
-import Navbar from "@/components/pages/NavBar";
-import { ReactLenis, useLenis } from 'lenis/react';
+import { ClerkProvider } from "@clerk/nextjs";
+import { ReactLenis } from 'lenis/react';
 import { monaSans } from "./fonts";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Coeus - Nền tảng học Trực tuyến và Trực tiếp.",

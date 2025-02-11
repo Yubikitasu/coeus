@@ -1,15 +1,14 @@
 'use client'
 
-import { api } from "@/convex/_generated/api"
+import { api } from "@/convex/_generated/api";
 import { useOrganization, useUser } from "@clerk/nextjs";
-import { useQuery } from "convex/react"
+import { useQuery } from "convex/react";
 import { LatexRenderer } from "../LatexRenderer";
-import { getCurrentUser } from "@/lib/get-current-user";
 
 export default function Messages() {
     const { user } = useUser();
     const { organization } = useOrganization();
-    let query = useQuery(api.query.findPost, { userId: user?.id, orgId: organization?.id });
+    const query = useQuery(api.query.findPost, { userId: user?.id, orgId: organization?.id });
     
     if (!user || !organization) {
         return (
@@ -23,7 +22,7 @@ export default function Messages() {
                 <div>
                     {query.map((message) => {
                         if (message.content.includes("$")) {
-                            let content = message.content;
+                            const content = message.content;
                             const regex = /\$\$(.*?)\$\$|\$(.*?)\$|\\\[(.*?)\\\]|([^$\\]+)/g;
                             const matches = [...content.matchAll(regex)].map(match => {
                                 return {

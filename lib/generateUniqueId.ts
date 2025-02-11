@@ -3,10 +3,13 @@ export function generateUniqueId() {
   let b = "";
   let f = "";
   let g = "";
+  let d = 0;
+  let e = 0;
+  let l = 0;
   for (let c = 0; c <= 4; c++) {
-    let d = Math.floor(Math.random() * (a.length - 1));
-    let e = Math.floor(Math.random() * (a.length - 1));
-    let l = Math.floor(Math.random() * (a.length - 1));
+    d = Math.floor(Math.random() * (a.length - 1));
+    e = Math.floor(Math.random() * (a.length - 1));
+    l = Math.floor(Math.random() * (a.length - 1));
     b += a[d];
     f += a[e];
     g += a[l];
