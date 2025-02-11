@@ -30,7 +30,7 @@ export function BaiTapFromUserOrg() {
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
-                <div>
+                <div className="truncate">
                   <div className="text-lg font-bold">{baitap.baitapTitle}</div>
                   <div>{baitap.baitapDescription}</div>
                 </div>
@@ -88,7 +88,7 @@ export function BaiTapFromOrg() {
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
-                <div>
+                <div className="truncate">
                   <div className="text-lg font-bold">{baitap.baitapTitle}</div>
                   <div>{baitap.baitapDescription}</div>
                 </div>

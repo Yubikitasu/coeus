@@ -19,4 +19,15 @@ export default defineSchema({
     .index("by_user_org", ["userId", "orgId"])
     .index("by_org", ["orgId"])
     .index("by_baitapId", ["baiTapId"]),
+  cauhoi: defineTable({
+    userId: v.any(),
+    orgId: v.any(),
+    baiTapId: v.string(),
+    cauhoi: v.string(),
+    cautraloiA: v.string(),
+    cautraloiB: v.string(),
+    cautraloiC: v.string(),
+    cautraloiD: v.string(),
+    correctAnswer: v.array(v.string())
+  })
 });

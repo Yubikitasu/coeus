@@ -40,3 +40,31 @@ export const createBaiTap = mutation({
     return baiTap;
   },
 });
+
+export const createCauHoi = mutation({
+  args: {
+    userId: v.any(),
+    orgId: v.any(),
+    baiTapId: v.string(),
+    cauhoi: v.string(),
+    cautraloiA: v.string(),
+    cautraloiB: v.string(),
+    cautraloiC: v.string(),
+    cautraloiD: v.string(),
+    correctAnswer: v.array(v.string())
+  }, 
+  handler: async (ctx, args) => {
+    const cauhoi = ctx.db.insert("cauhoi", {
+      userId: args.userId,
+      orgId: args.orgId,
+      baiTapId: args.baiTapId,
+      cauhoi: args.cauhoi,
+      cautraloiA: args.cautraloiA,
+      cautraloiB: args.cautraloiB,
+      cautraloiC: args.cautraloiC,
+      cautraloiD: args.cautraloiD,
+      correctAnswer: args.correctAnswer
+    });
+    return cauhoi;
+  }
+})

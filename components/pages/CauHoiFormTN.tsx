@@ -13,9 +13,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { api } from "@/convex/_generated/api";
 import { toast } from "@/hooks/use-toast";
+import { useOrganization, useUser } from "@clerk/clerk-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckIcon } from "@radix-ui/react-icons";
+import { useMutation } from "convex/react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import LatexAdder from "./LatexAdder";
@@ -43,7 +47,17 @@ const FormSchema = z.object({
     .max(160, { message: "Câu trả lời không được dài quá 160 ký tự." }),
 });
 
-export default function CauHoiFormTN() {
+interface CHFTNProps {
+  btId: string;
+}
+
+export default function CauHoiFormTN({ btId }: CHFTNProps) {
+  const [correctAnswers, setCorrectAnswer] = useState([""]);
+  const [clicked, setClicked] = useState([false, false, false, false]);
+  const mutation = useMutation(api.mutations.createCauHoi);
+  const user = useUser();
+  const organization = useOrganization();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -56,14 +70,50 @@ export default function CauHoiFormTN() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    if (
+      user.user != null &&
+      user.user.username != null &&
+      organization.organization != null
+    ) {
+      mutation({
+        userId: user.user.id,
+        orgId: organization.organization.id,
+        cauhoi: data.cauhoi,
+        cautraloiA: data.cautraloiA,
+        cautraloiB: data.cautraloiB,
+        cautraloiC: data.cautraloiC,
+        cautraloiD: data.cautraloiD,
+        correctAnswer: correctAnswers,
+        baiTapId: btId,
+      });
+      toast({
+        title: "Tạo câu hỏi thành công.",
+      });
+    }
+  }
+
+  function checkClicked(index: number, value: string) {
+    const array = [...clicked];
+    if (!correctAnswers.includes(value) && array[index] == false) {
+      array[index] = true;
+      setClicked(array);
+    } else if (correctAnswers.includes(value) && array[index] == true) {
+      array[index] = false;
+      setClicked(array);
+    }
+  }
+
+  function handleCorrectClick(value: string) {
+    if (!correctAnswers.includes(value)) {
+      setCorrectAnswer([...correctAnswers, value]);
+    } else {
+      const array = [...correctAnswers];
+      const index = array.indexOf(value);
+      if (index !== -1) {
+        array.splice(index, 1);
+        setCorrectAnswer(array);
+      }
+    }
   }
 
   return (
@@ -86,8 +136,8 @@ export default function CauHoiFormTN() {
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Mẹo: Bạn không cần phải viết &quot;Câu 1:&quot; ở đầu câu hỏi. Hệ thống
-                  sẽ tự động thêm vào.
+                  Mẹo: Bạn không cần phải viết &quot;Câu 1:&quot; ở đầu câu hỏi.
+                  Hệ thống sẽ tự động thêm vào.
                 </FormDescription>
                 <LatexAdder />
               </FormItem>
@@ -108,7 +158,18 @@ export default function CauHoiFormTN() {
                         {...field}
                       />
                     </FormControl>
-                    <div className="rounded-full border border-input h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent">
+                    <div
+                      className={
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        (clicked[0] === true
+                          ? "border-green-600 text-green-600"
+                          : "border-input")
+                      }
+                      onClick={() => {
+                        handleCorrectClick("A");
+                        checkClicked(0, "A");
+                      }}
+                    >
                       <CheckIcon />
                     </div>
                   </div>
@@ -131,7 +192,18 @@ export default function CauHoiFormTN() {
                         {...field}
                       />
                     </FormControl>
-                    <div className="rounded-full border border-input h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent">
+                    <div
+                      className={
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        (clicked[1] === true
+                          ? "border-green-600 text-green-600"
+                          : "border-input")
+                      }
+                      onClick={() => {
+                        handleCorrectClick("B");
+                        checkClicked(1, "B");
+                      }}
+                    >
                       <CheckIcon />
                     </div>
                   </div>
@@ -154,7 +226,18 @@ export default function CauHoiFormTN() {
                         {...field}
                       />
                     </FormControl>
-                    <div className="rounded-full border border-input h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent">
+                    <div
+                      className={
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        (clicked[2] === true
+                          ? "border-green-600 text-green-600"
+                          : "border-input")
+                      }
+                      onClick={() => {
+                        handleCorrectClick("C");
+                        checkClicked(2, "C");
+                      }}
+                    >
                       <CheckIcon />
                     </div>
                   </div>
@@ -177,7 +260,18 @@ export default function CauHoiFormTN() {
                         {...field}
                       />
                     </FormControl>
-                    <div className="rounded-full border border-input h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent">
+                    <div
+                      className={
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        (clicked[3] === true
+                          ? "border-green-600 text-green-600"
+                          : "border-input")
+                      }
+                      onClick={() => {
+                        handleCorrectClick("D");
+                        checkClicked(3, "D");
+                      }}
+                    >
                       <CheckIcon />
                     </div>
                   </div>
@@ -188,8 +282,9 @@ export default function CauHoiFormTN() {
           />
 
           <FormDescription className="text-sm text-muted-foreground">
-            Mẹo: Bạn không cần phải viết &quot;A.&quot;, &quot;B.&quot;, &quot;C.&quot;, &quot;D.&quot; ở đầu câu trả
-            lời. Hệ thống sẽ tự động thêm vào.
+            Mẹo: Bạn không cần phải viết &quot;A.&quot;, &quot;B.&quot;,
+            &quot;C.&quot;, &quot;D.&quot; ở đầu câu trả lời. Hệ thống sẽ tự
+            động thêm vào.
           </FormDescription>
           <Button className="w-[100%]" variant={"outline"} type="submit">
             Tạo câu hỏi

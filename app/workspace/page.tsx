@@ -9,7 +9,7 @@ import {
   SignedIn,
   SignedOut,
   useOrganization,
-  useUser
+  useUser,
 } from "@clerk/nextjs";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
@@ -55,11 +55,12 @@ export default function Workspace() {
     );
   }
   return (
-    <div
-      className="grid grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative"
-    >
+    <div className="grid grid-cols-1 md:grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative">
       {/* //LEFT PART */}
-      <div className="border-x hidden md:block border-input shadow-sm flex-row w-100" id="left-panel">
+      <div
+        className="border-x hidden md:block border-input shadow-sm flex-row w-100"
+        id="left-panel"
+      >
         <ClerkLoading>Loading...</ClerkLoading>
         <ClerkLoaded>
           <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm">
@@ -134,9 +135,17 @@ export default function Workspace() {
         ) : pageState === "tra-diem" ? (
           <TraDiem />
         ) : pageState === "" ? (
-          <></>
+          <div className="min-h-screen flex flex-col justify-center items-center w-[100%] p-6 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]">
+            <Image src="/05.svg" height={300} width={300} alt=""></Image>
+            <h1 className="text-xl font-black">Chào mừng {user?.fullName} đã đến với Coeus!</h1>
+            <p className="text-sm">Bạn có thể tiếp tục bằng việc chọn Tin nhắn, Bài tập, Tra điểm, Hướng dẫn sử dụng.</p>
+          </div>
         ) : (
-          <></>
+          <div className="min-h-screen flex flex-col justify-center items-center w-[100%] p-6 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]">
+            <Image src="/05.svg" height={300} width={300} alt=""></Image>
+            <h1 className="text-xl font-black">Chào mừng {user?.fullName} đã đến với Coeus!</h1>
+            <p className="text-sm">Bạn có thể tiếp tục bằng việc chọn Tin nhắn, Bài tập, Tra điểm, Hướng dẫn sử dụng.</p>
+          </div>
         )}
       </div>
     </div>
