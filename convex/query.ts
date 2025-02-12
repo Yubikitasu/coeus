@@ -44,3 +44,16 @@ export const findBaiTapByOrg = query({
         return baitap;
     }
 });
+
+export const getCauHoiByBTId = query ({
+    args: {
+        baiTapId: v.any(),
+    },
+    handler: async (ctx, args) => {
+        const cauhoi = await ctx.db
+        .query("cauhoi")
+        .withIndex("by_baiTapId", (q) => q.eq("baiTapId", args.baiTapId))
+        .collect();
+        return cauhoi;
+    }
+})

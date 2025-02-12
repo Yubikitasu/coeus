@@ -30,4 +30,5 @@ export default defineSchema({
     cautraloiD: v.string(),
     correctAnswer: v.array(v.string())
   })
+  .index("by_baiTapId", ["baiTapId"])
 });
