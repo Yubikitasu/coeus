@@ -25,19 +25,19 @@ export default function RootLayout({
     <ClerkProvider localization={viVN}>
       <ConvexClientProvider>
         <ReactLenis root>
-            <html lang="en" suppressHydrationWarning>
-              <body className={`${monaSans.className} antialiased`}>
-                <div className="hidden" id="OPENME">
-                  Trang web này được build trên framework NextJS, nhà sáng lập
-                  của trang web này là Phạm Đăng Khoa.
-                </div>
-                {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-                <Navbar />
-                <Toaster />
-                {children}
-                {/* </ThemeProvider> */}
-              </body>
-            </html>
+          <html lang="en" suppressHydrationWarning>
+            <body className={`${monaSans.className} antialiased`}>
+              <div className="hidden" id="OPENME">
+                Trang web này được build trên framework NextJS, nhà sáng lập của
+                trang web này là Phạm Đăng Khoa.
+              </div>
+              {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
+              <Navbar />
+              <Toaster />
+              {children}
+              {/* </ThemeProvider> */}
+            </body>
+          </html>
         </ReactLenis>
       </ConvexClientProvider>
     </ClerkProvider>

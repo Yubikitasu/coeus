@@ -18,6 +18,7 @@ import { useState } from "react";
 import BaiTap from "./bai-tap";
 import TinNhan from "./tin-nhan";
 import TraDiem from "./tra-diem";
+import WorkspaceEmpty from "@/components/pages/WorkspaceEmpty";
 
 export default function Workspace() {
   const { user, isSignedIn, isLoaded } = useUser();
@@ -135,17 +136,9 @@ export default function Workspace() {
         ) : pageState === "tra-diem" ? (
           <TraDiem />
         ) : pageState === "" ? (
-          <div className="min-h-screen flex flex-col justify-center items-center w-[100%] p-6 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]">
-            <Image src="/05.svg" height={300} width={300} alt=""></Image>
-            <h1 className="text-xl font-black">Chào mừng {user?.fullName} đã đến với Coeus!</h1>
-            <p className="text-sm">Bạn có thể tiếp tục bằng việc chọn Tin nhắn, Bài tập, Tra điểm, Hướng dẫn sử dụng.</p>
-          </div>
+          <WorkspaceEmpty />
         ) : (
-          <div className="min-h-screen flex flex-col justify-center items-center w-[100%] p-6 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:50px_50px]">
-            <Image src="/05.svg" height={300} width={300} alt=""></Image>
-            <h1 className="text-xl font-black">Chào mừng {user?.fullName} đã đến với Coeus!</h1>
-            <p className="text-sm">Bạn có thể tiếp tục bằng việc chọn Tin nhắn, Bài tập, Tra điểm, Hướng dẫn sử dụng.</p>
-          </div>
+          <WorkspaceEmpty />
         )}
       </div>
     </div>

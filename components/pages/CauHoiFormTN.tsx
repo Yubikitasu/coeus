@@ -27,24 +27,24 @@ import LatexAdder from "./LatexAdder";
 const FormSchema = z.object({
   cauhoi: z
     .string()
-    .min(10, { message: "Câu hỏi phải có ít nhất 10 ký tự." })
-    .max(160, { message: "Câu hỏi không được dài quá 160 ký tự." }),
+    .min(2, { message: "Câu hỏi phải có ít nhất 2 ký tự." })
+    .max(500, { message: "Câu hỏi không được dài quá 500 ký tự." }),
   cautraloiA: z
     .string()
-    .min(2, { message: "Câu trả lời phải có ít nhất 2 ký tự." })
-    .max(160, { message: "Câu trả lời không được dài quá 160 ký tự." }),
+    .min(1, { message: "Câu trả lời phải có ít nhất 1 ký tự." })
+    .max(300, { message: "Câu trả lời không được dài quá 300 ký tự." }),
   cautraloiB: z
     .string()
-    .min(2, { message: "Câu trả lời phải có ít nhất 2 ký tự." })
-    .max(160, { message: "Câu trả lời không được dài quá 160 ký tự." }),
+    .min(1, { message: "Câu trả lời phải có ít nhất 1 ký tự." })
+    .max(300, { message: "Câu trả lời không được dài quá 300 ký tự." }),
   cautraloiC: z
     .string()
-    .min(2, { message: "Câu trả lời phải có ít nhất 2 ký tự." })
-    .max(160, { message: "Câu trả lời không được dài quá 160 ký tự." }),
+    .min(1, { message: "Câu trả lời phải có ít nhất 1 ký tự." })
+    .max(300, { message: "Câu trả lời không được dài quá 300 ký tự." }),
   cautraloiD: z
     .string()
-    .min(2, { message: "Câu trả lời phải có ít nhất 2 ký tự." })
-    .max(160, { message: "Câu trả lời không được dài quá 160 ký tự." }),
+    .min(1, { message: "Câu trả lời phải có ít nhất 1 ký tự." })
+    .max(300, { message: "Câu trả lời không được dài quá 300 ký tự." }),
 });
 
 interface CHFTNProps {
