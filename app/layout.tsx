@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 // import localFont from "next/font/local";
 // import { Inter } from "next/font/google";
+import { ConvexClientProvider } from "@/ConvexClientProvider";
 import Navbar from "@/components/pages/NavBar";
 import { Toaster } from "@/components/ui/toaster";
-import { ConvexClientProvider } from "@/ConvexClientProvider";
 import { viVN } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ReactLenis } from "lenis/react";
