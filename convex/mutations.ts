@@ -41,6 +41,15 @@ export const createBaiTap = mutation({
   },
 });
 
+export const deleteBaiTap = mutation({
+  args: {
+    id: v.id("baitap"),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
+
 export const createCauHoi = mutation({
   args: {
     userId: v.any(),
@@ -51,8 +60,8 @@ export const createCauHoi = mutation({
     cautraloiB: v.string(),
     cautraloiC: v.string(),
     cautraloiD: v.string(),
-    correctAnswer: v.array(v.string())
-  }, 
+    correctAnswer: v.array(v.string()),
+  },
   handler: async (ctx, args) => {
     const cauhoi = ctx.db.insert("cauhoi", {
       userId: args.userId,
@@ -63,8 +72,8 @@ export const createCauHoi = mutation({
       cautraloiB: args.cautraloiB,
       cautraloiC: args.cautraloiC,
       cautraloiD: args.cautraloiD,
-      correctAnswer: args.correctAnswer
+      correctAnswer: args.correctAnswer,
     });
     return cauhoi;
-  }
-})
+  },
+});

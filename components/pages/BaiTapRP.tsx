@@ -3,9 +3,9 @@
 import { api } from "@/convex/_generated/api";
 import { useOrganization, useUser } from "@clerk/clerk-react";
 import { usePaginatedQuery } from "convex/react";
-import { Button } from "../ui/button";
-import { DotsVerticalIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import BaiTapButtons from "./BaiTapButtons";
 
 export function BaiTapFromUserOrg() {
   const { isSignedIn, user } = useUser();
@@ -26,7 +26,8 @@ export function BaiTapFromUserOrg() {
         <div>
           {results.length != 0 ? (
             results?.map((baitap) => (
-              <Link href={"/bai-tap/" + baitap.baiTapId}
+              <Link
+                href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
@@ -36,9 +37,7 @@ export function BaiTapFromUserOrg() {
                 </div>
                 <div className="flex items-center flex-row">
                   {baitap.username}
-                  <Button className="ms-2" variant={"outline"}>
-                    <DotsVerticalIcon />
-                  </Button>
+                  <BaiTapButtons btbKey={baitap._id} />
                 </div>
               </Link>
             ))
@@ -84,7 +83,8 @@ export function BaiTapFromOrg() {
         <div>
           {results.length != 0 ? (
             results?.map((baitap) => (
-              <Link href={"/bai-tap/" + baitap.baiTapId}
+              <Link
+                href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
                 className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
@@ -95,9 +95,7 @@ export function BaiTapFromOrg() {
                 <div className="flex items-center flex-row">
                   {baitap.username}
                   {baitap.userId === user.id ? (
-                    <Button className="ms-2" variant={"outline"}>
-                      <DotsVerticalIcon />
-                    </Button>
+                    <BaiTapButtons btbKey={baitap._id} />
                   ) : (
                     <></>
                   )}
