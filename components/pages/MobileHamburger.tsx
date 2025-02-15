@@ -5,7 +5,6 @@ import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import gsap from "gsap";
 import { useRef, useState } from "react";
 import { Button } from "../ui/button";
-import NavBarAccount from "./NavBarAccount";
 import NavBarMobileAccount from "./NavbarMobileAccount";
 
 export default function MobileHamburger() {

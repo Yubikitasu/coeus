@@ -1,6 +1,6 @@
 "use client";
 
-import { useOrganization, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import Image from "next/image";
 
 export default function WorkspaceEmpty() {
