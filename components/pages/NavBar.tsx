@@ -5,7 +5,7 @@ import MobileHamburger from "./MobileHamburger";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center p-3 justify-around sticky top-0 left-0 shadow-sm px-0 lg:px-[30px] border border-input z-10 bg-background">
+    <div className="flex items-center p-3 justify-around sticky top-0 left-0 shadow-xs px-0 lg:px-[30px] border border-input z-10 bg-background">
       <Link href="/">
         <Image
           src="/logo.svg"

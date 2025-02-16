@@ -1,4 +1,5 @@
 import { LatexRenderer } from "@/components/LatexRenderer";
+import { generatePassword } from "./generateUnique2";
 
 export default function tSTL(data: string) {
   if (data.includes("$")) {
@@ -18,7 +19,7 @@ export default function tSTL(data: string) {
               <LatexRenderer
                 key={index}
                 latex={match.content}
-                id={data + index}
+                id={generatePassword() + generatePassword()}
               />
             );
           } else {

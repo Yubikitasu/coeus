@@ -24,7 +24,7 @@ export default function BaiTapButtons({ btbKey }: BTBProps) {
   return (
     <DropdownMenu key={btbKey}>
       <DropdownMenuTrigger asChild>
-        <Button className="ms-2 z-[2]" variant={"outline"}>
+        <Button className="ms-2 z-2" variant={"outline"}>
           <DotsVerticalIcon />
         </Button>
       </DropdownMenuTrigger>

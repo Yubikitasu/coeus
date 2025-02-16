@@ -84,7 +84,7 @@ export default function LandingPage() {
               ].map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex flex-col justify-between p-6 bg-white rounded-lg shadow dark:bg-gray-800"
+                  className="flex flex-col justify-between p-6 bg-white rounded-lg shadow-sm dark:bg-gray-800"
                 >
                   <p className="text-gray-500 dark:text-gray-400">
                     &quot;{testimonial.quote}&quot;

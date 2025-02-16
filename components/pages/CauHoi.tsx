@@ -40,7 +40,7 @@ export default function RenderCauHoi({ baiTapId }: RenderCauHoiProp) {
     <>
       {data?.map((cauhoi, index) => (
         <div
-          className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-sm bg-background justify-between items-center rounded-md"
+          className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-xs bg-background justify-between items-center rounded-md"
           key={cauhoi._id}
         >
           {tSTL(cauhoi.cauhoi)}

@@ -117,7 +117,7 @@ export default function CauHoiFormTN({ btId }: CHFTNProps) {
   }
 
   return (
-    <div className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-sm bg-background justify-between items-center rounded-md">
+    <div className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-xs bg-background justify-between items-center rounded-md">
       <h1 className="text-2xl font-black mb-2">Tạo câu hỏi trắc nghiệm</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -160,7 +160,7 @@ export default function CauHoiFormTN({ btId }: CHFTNProps) {
                     </FormControl>
                     <div
                       className={
-                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-xs cursor-pointer hover:bg-accent " +
                         (clicked[0] === true
                           ? "border-green-600 text-green-600"
                           : "border-input")
@@ -194,7 +194,7 @@ export default function CauHoiFormTN({ btId }: CHFTNProps) {
                     </FormControl>
                     <div
                       className={
-                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-xs cursor-pointer hover:bg-accent " +
                         (clicked[1] === true
                           ? "border-green-600 text-green-600"
                           : "border-input")
@@ -228,7 +228,7 @@ export default function CauHoiFormTN({ btId }: CHFTNProps) {
                     </FormControl>
                     <div
                       className={
-                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-xs cursor-pointer hover:bg-accent " +
                         (clicked[2] === true
                           ? "border-green-600 text-green-600"
                           : "border-input")
@@ -262,7 +262,7 @@ export default function CauHoiFormTN({ btId }: CHFTNProps) {
                     </FormControl>
                     <div
                       className={
-                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-sm cursor-pointer hover:bg-accent " +
+                        "rounded-full border h-6 w-6 flex items-center justify-center ml-2 shadow-xs cursor-pointer hover:bg-accent " +
                         (clicked[3] === true
                           ? "border-green-600 text-green-600"
                           : "border-input")

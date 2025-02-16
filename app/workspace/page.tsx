@@ -56,15 +56,15 @@ export default function Workspace() {
     );
   }
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-[0] relative">
+    <div className="grid grid-cols-1 w-[100%] md:grid-cols-[.30fr_.70fr] lg:grid-cols-[.25fr_.75fr] min-h-screen z-0 relative">
       {/* //LEFT PART */}
       <div
-        className="border-x hidden md:block border-input shadow-sm flex-row w-100"
+        className="border-x hidden md:block border-input shadow-xs flex-row w-[100%]"
         id="left-panel"
       >
         <ClerkLoading>Loading...</ClerkLoading>
         <ClerkLoaded>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm">
+          <div className="w-[100%] h-auto border-y border-input p-6 shadow-xs">
             <div>
               <Image
                 src="/10815583.jpg"
@@ -80,7 +80,7 @@ export default function Workspace() {
               <span className="text-sm">Hôm nay bạn sẽ làm gì?</span>
             </div>
           </div>
-          <div className="w-[100%] h-auto border-y border-input p-6 shadow-sm">
+          <div className="w-[100%] h-auto border-y border-input p-6 shadow-xs">
             <div>
               <Label>Tổ chức của bạn</Label>
             </div>
@@ -89,7 +89,7 @@ export default function Workspace() {
             </div>
           </div>
           <div
-            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            className="w-[100%] h-auto border-y border-input p-6 shadow-xs bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
             onClick={() => {
               setPageState("tin-nhan");
             }}
@@ -98,7 +98,7 @@ export default function Workspace() {
             <ArrowRightIcon />
           </div>
           <div
-            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            className="w-[100%] h-auto border-y border-input p-6 shadow-xs bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
             onClick={() => {
               setPageState("bai-tap");
             }}
@@ -107,7 +107,7 @@ export default function Workspace() {
             <ArrowRightIcon />
           </div>
           <div
-            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            className="w-[100%] h-auto border-y border-input p-6 shadow-xs bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
             onClick={() => {
               setPageState("tra-diem");
             }}
@@ -116,7 +116,7 @@ export default function Workspace() {
             <ArrowRightIcon />
           </div>
           <div
-            className="w-[100%] h-auto border-y border-input p-6 shadow-sm bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
+            className="w-[100%] h-auto border-y border-input p-6 shadow-xs bg-background hover:bg-accent cursor-pointer flex flex-row justify-between items-center"
             onClick={() => {
               setPageState("");
             }}

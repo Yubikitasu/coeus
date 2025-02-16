@@ -29,7 +29,7 @@ export function BaiTapFromUserOrg() {
               <Link
                 href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
-                className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
+                className="h-[70px] w-[100%] border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
                 <div className="truncate">
                   <div className="text-lg font-bold">{baitap.baitapTitle}</div>
@@ -42,7 +42,7 @@ export function BaiTapFromUserOrg() {
               </Link>
             ))
           ) : (
-            <div className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
+            <div className="h-[70px] w-[100%] border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
               Bạn chưa tạo bài tập nào cả.
             </div>
           )}
@@ -86,7 +86,7 @@ export function BaiTapFromOrg() {
               <Link
                 href={"/bai-tap/" + baitap.baiTapId}
                 key={baitap._id}
-                className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
+                className="h-[70px] w-[100%] border-b border-x border-inherit bg-background flex items-center justify-between hover:bg-accent cursor-pointer text-xs px-6"
               >
                 <div className="truncate">
                   <div className="text-lg font-bold">{baitap.baitapTitle}</div>
@@ -103,7 +103,7 @@ export function BaiTapFromOrg() {
               </Link>
             ))
           ) : (
-            <div className="h-[70px] w-100 border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
+            <div className="h-[70px] w-[100%] border-b border-x border-inherit bg-background flex items-center justify-center text-xs px-6">
               Không có bài tập nào trong tổ chức của bạn.
             </div>
           )}
