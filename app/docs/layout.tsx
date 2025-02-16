@@ -5,7 +5,7 @@ import { baseOptions } from "@/app/layout.config";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <DocsLayout tree={source.pageTree} {...baseOptions}>
+    <DocsLayout disableThemeSwitch tree={source.pageTree} {...baseOptions}>
       {children}
     </DocsLayout>
   );

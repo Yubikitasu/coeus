@@ -10,6 +10,7 @@ import { ReactLenis } from "lenis/react";
 import { monaSans } from "./fonts";
 
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Coeus - Nền tảng học Trực tuyến và Trực tiếp.",
@@ -32,11 +33,10 @@ export default function RootLayout({
                 Trang web này được build trên framework NextJS, nhà sáng lập của
                 trang web này là Phạm Đăng Khoa.
               </div>
-              {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-
-              <Toaster />
-              <RootProvider>{children}</RootProvider>
-              {/* </ThemeProvider> */}
+              <ThemeProvider attribute="class" defaultTheme="light">
+                <Toaster />
+                <RootProvider>{children}</RootProvider>
+              </ThemeProvider>
             </body>
           </html>
         </ReactLenis>
