@@ -46,21 +46,21 @@ export default function LandingPage() {
               <div className="flex flex-col items-center text-center">
                 <BookOpen className="h-12 w-12 mb-4 text-primary" />
                 <h3 className="text-lg font-bold">Hiệu năng</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-md text-gray-500 dark:text-gray-400 text-pretty max-w-[300px]">
                   Hiệu suất học tập và làm việc được nâng cao cùng Coeus.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
                 <Zap className="h-12 w-12 mb-4 text-primary" />
                 <h3 className="text-lg font-bold">Sáng tạo</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-md text-gray-500 dark:text-gray-400 text-pretty max-w-[300px]">
                   Giúp giáo viên và học sinh có một cách học tập mới mẻ.
                 </p>
               </div>
               <div className="flex flex-col items-center text-center">
                 <Users className="h-12 w-12 mb-4 text-primary" />
                 <h3 className="text-lg font-bold">Hợp tác</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="text-md text-gray-500 dark:text-gray-400 text-pretty max-w-[300px]">
                   Với hệ thống học tập Coeus, bạn sẽ làm quen với cách học tập
                   theo thời đại.
                 </p>
@@ -71,9 +71,9 @@ export default function LandingPage() {
         <section className="w-full py-12 md:py-24 lg:py-32 flex justify-center items-center">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
-              Đánh Giá Từ Những Khách Hàng
+              Đánh Giá Từ Học Sinh và Giáo Viên
             </h2>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 text-pretty">
               {[
                 {
                   name: "Phạm Phương Lâm",
