@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 // import { Inter } from "next/font/google";
 import { ConvexClientProvider } from "@/ConvexClientProvider";
-import Navbar from "@/components/pages/NavBar";
 import { Toaster } from "@/components/ui/toaster";
 import { viVN } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
+import { RootProvider } from "fumadocs-ui/provider";
 import { ReactLenis } from "lenis/react";
 import { monaSans } from "./fonts";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -32,9 +33,9 @@ export default function RootLayout({
                 trang web này là Phạm Đăng Khoa.
               </div>
               {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem> */}
-              <Navbar />
+
               <Toaster />
-              {children}
+              <RootProvider>{children}</RootProvider>
               {/* </ThemeProvider> */}
             </body>
           </html>

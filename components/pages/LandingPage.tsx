@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { SignInButton } from "@clerk/clerk-react";
 import { BookOpen, ChevronRight, Users, Zap } from "lucide-react";
+import Link from "next/link";
 
 export default function LandingPage() {
   return (
@@ -18,9 +20,19 @@ export default function LandingPage() {
                   triển cùng Coeus.
                 </p>
               </div>
-              <div className="space-x-4 space-y-4">
-                <Button>Học cùng Coeus</Button>
-                <Button variant="outline">Tìm hiểu thêm</Button>
+              <div className="space-y-4 md:space-x-4 flex flex-col md:flex-row justify-center">
+                <SignInButton mode="modal">
+                  <Button>
+                    Học cùng Coeus
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </SignInButton>
+                <Link href="/docs">
+                  <Button variant="outline">
+                    Tìm hiểu thêm
+                    <ChevronRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

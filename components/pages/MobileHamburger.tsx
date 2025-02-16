@@ -16,10 +16,12 @@ export default function MobileHamburger() {
     if (state == true) {
       setState(false);
       gsap.to(".good", { opacity: 0, height: 0 });
+      gsap.to(".good", {translateY: -100 + "vh", ease: "sine"});
     }
     if (state == false) {
       setState(true);
       gsap.to(".good", { opacity: 100, height: 100 + "vh" });
+      gsap.to(".good", {translateY: 0 + "vh", ease: "sine"});
     }
   });
   return (
@@ -31,7 +33,7 @@ export default function MobileHamburger() {
       >
         <HamburgerMenuIcon />
       </Button>
-      <div className="absolute left-0 top-0 w-[100%] bg-background opacity-0 z-10 p-12 pt-20 good">
+      <div className="absolute left-0 top-0 w-[100%] bg-background opacity-0 z-[3] p-12 pt-20 translate-y-[-100vh] border-b-4 border-b-input good">
         <div className="good opacity-0 overflow-clip">
           <NavBarMobileAccount />
         </div>
