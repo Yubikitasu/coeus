@@ -28,7 +28,7 @@ export default function MobileHamburger() {
     <div ref={container}>
       <Button
         variant="outline"
-        className="absolute right-15 top-3 z-20"
+        className="absolute right-15 top-2 z-20"
         onClick={onClickGood}
       >
         <HamburgerMenuIcon />

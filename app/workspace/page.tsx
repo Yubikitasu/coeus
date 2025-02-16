@@ -1,30 +1,36 @@
 "use client";
 
+import Navbar from "@/components/pages/NavBar";
+import WorkspaceEmpty from "@/components/pages/WorkspaceEmpty";
 import { Label } from "@/components/ui/label";
 import {
   ClerkLoaded,
   ClerkLoading,
   OrganizationSwitcher,
-  RedirectToSignIn,
   SignedIn,
-  SignedOut,
   useOrganization,
-  useUser,
+  useUser
 } from "@clerk/nextjs";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import BaiTap from "./bai-tap";
 import TinNhan from "./tin-nhan";
 import TraDiem from "./tra-diem";
-import WorkspaceEmpty from "@/components/pages/WorkspaceEmpty";
-import Navbar from "@/components/pages/NavBar";
 
 export default function Workspace() {
   const { user, isSignedIn, isLoaded } = useUser();
   const { organization } = useOrganization();
   const [pageState, setPageState] = useState("");
+  const router = useRouter();
+
+  useEffect(() => { 
+    if (!isSignedIn) {
+      router.push("/");
+    }
+  }, [isSignedIn, router]);
 
   if (!isLoaded) {
     return (
@@ -52,13 +58,11 @@ export default function Workspace() {
             </div>
             <OrganizationSwitcher hidePersonal />
           </SignedIn>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
         </div>
       </>
     );
   }
+
   return (
     <>
       <Navbar />
