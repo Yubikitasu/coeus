@@ -43,7 +43,7 @@ export default function RenderCauHoi({ baiTapId }: RenderCauHoiProp) {
           className="lg:w-[50%] md:w-[65%] w-[100%] h-auto border border-input p-6 shadow-xs bg-background justify-between items-center rounded-md"
           key={cauhoi._id}
         >
-          {tSTL(cauhoi.cauhoi)}
+          <div className="font-bold">Câu {index+1}:</div> {tSTL(cauhoi.cauhoi)}
           <div className="space-y-2 mt-4">
             <div
               className={
